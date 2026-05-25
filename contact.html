@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreshFruits - Contact Us</title>
+    <style>
+/* Fruit Selling Website - Shared Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fffdf5;
+}
+
+/* Navigation */
+.navbar {
+    background: linear-gradient(135deg, #56ab2f 0%, #a8e063 100%);
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
+.logo span {
+    color: #2d3436;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    background: rgba(255,255,255,0.2);
+    transform: translateY(-2px);
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                url('https://images.unsplash.com/photo-1619566636858-adf3ef46400b?w=1920');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    margin-top: 0;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero-content p {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background: #ff6b6b;
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #ee5a5a;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255,107,107,0.3);
+}
+
+.btn-secondary {
+    background: #ffa502;
+    margin-left: 1rem;
+}
+
+.btn-secondary:hover {
+    background: #e69500;
+}
+
+/* Section Styles */
+.section {
+    padding: 5rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #2d3436;
+    margin-bottom: 1rem;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: #636e72;
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+}
+
+/* Fruit Cards */
+.fruit-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.fruit-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.fruit-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.fruit-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.fruit-card-content {
+    padding: 1.5rem;
+}
+
+.fruit-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: #2d3436;
+}
+
+.fruit-card p {
+    color: #636e72;
+    margin-bottom: 1rem;
+}
+
+.price {
+    font-size: 1.5rem;
+    color: #ff6b6b;
+    font-weight: bold;
+}
+
+/* About Section */
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.about-text h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #2d3436;
+}
+
+.about-text p {
+    margin-bottom: 1rem;
+    color: #636e72;
+    line-height: 1.8;
+}
+
+.about-image img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* Stats */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.stat-item h3 {
+    font-size: 2.5rem;
+    color: #ff6b6b;
+    margin-bottom: 0.5rem;
+}
+
+.stat-item p {
+    color: #636e72;
+    font-weight: 500;
+}
+
+/* Service Cards */
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.service-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+}
+
+.service-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.service-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: #2d3436;
+}
+
+.service-card p {
+    color: #636e72;
+    line-height: 1.7;
+}
+
+/* Contact Form */
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+}
+
+.contact-info {
+    padding: 2rem;
+}
+
+.contact-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #2d3436;
+}
+
+.contact-detail {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    gap: 1rem;
+}
+
+.contact-detail .icon {
+    font-size: 1.5rem;
+    width: 50px;
+    height: 50px;
+    background: #ff6b6b;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.contact-form {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #2d3436;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #dfe6e9;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #ff6b6b;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Footer */
+.footer {
+    background: linear-gradient(135deg, #56ab2f 0%, #a8e063 100%);
+    color: white;
+    padding: 3rem 2rem 1rem;
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    margin-bottom: 2rem;
+}
+
+.footer-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+     color: #14532D;
+}
+
+.footer-section p,
+.footer-section a {
+    color: #F0FDF4;
+    text-decoration: none;
+    line-height: 1.8;
+}
+
+.footer-section a:hover {
+    color: #ff6b6b;
+}
+
+.footer-bottom {
+    border-top: 1px solid #636e72;
+    padding-top: 1.5rem;
+    color: #F0FDF4;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+
+    .about-content,
+    .contact-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+</style>
+    <style>
+        .page-header {
+           background-color: #14532D;
+            background-size: cover;
+            background-position: center;
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            margin-top: 60px;
+        }
+        .page-header h1 {
+            font-size: 3rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .map-container {
+            width: 100%;
+            height: 400px;
+            background: #dfe6e9;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 2rem;
+            overflow: hidden;
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .faq-item {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+        .faq-item h4 {
+            color: #2d3436;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        .faq-item p {
+            color: #636e72;
+        }
+    </style>
+<base target="_blank">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Fresh<span>Fruits</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html" class="active">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div>
+            <h1>Contact Us</h1>
+            <p>We'd love to hear from you!</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Get In Touch</h3>
+                <p style="color: #636e72; margin-bottom: 2rem;">Have questions about our fruits, services, or subscriptions? We're here to help!</p>
+
+                <div class="contact-detail">
+                    <div class="icon">📍</div>
+                    <div>
+                        <strong>Address</strong><br>
+                        123 Fruit street, thane district<br>
+                        cheeta camp, 400088
+                    </div>
+                </div>
+
+                <div class="contact-detail">
+                    <div class="icon">📞</div>
+                    <div>
+                        <strong>Phone</strong><br>
+                        +1 (555) 123-4567<br>
+                        Mon - Sat: 8AM - 8PM
+                    </div>
+                </div>
+
+                <div class="contact-detail">
+                    <div class="icon">✉️</div>
+                    <div>
+                        <strong>Email</strong><br>
+                        hello@freshfruits.com<br>
+                        support@freshfruits.com
+                    </div>
+                </div>
+
+                <div class="contact-detail">
+                    <div class="icon">🌐</div>
+                    <div>
+                        <strong>Social Media</strong><br>
+                        @freshfruits on Instagram, Facebook & Twitter
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h3 style="margin-bottom: 1.5rem; color: #2d3436;">Send Us a Message</h3>
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" placeholder="How can we help?">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Tell us more about your inquiry..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="section" style="max-width: 1200px;">
+        <h2 class="section-title">Find Us</h2>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1885.8165773107514!2d72.94672108864886!3d19.03588009554013!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c42cfd06676f%3A0x412ef900853d39d!2sDhobi%20Ghat%2C%20Cheeta%20Camp%2C%20Trombay%2C%20Mumbai%2C%20Maharashtra%20400088!5e0!3m2!1sen!2sin!4v1779349013567!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section" style="background: #fff3e0; margin: 0; max-width: 100%; padding: 5rem 2rem;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-subtitle">Quick answers to common questions</p>
+
+            <div style="margin-top: 2rem;">
+                <div class="faq-item">
+                    <h4>How fresh are your fruits?</h4>
+                    <p>All our fruits are harvested within 48 hours of delivery. We work directly with farms to ensure maximum freshness.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>What areas do you deliver to?</h4>
+                    <p>We currently deliver to all major cities in the US. Enter your zip code at checkout to confirm availability.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Can I customize my subscription box?</h4>
+                    <p>Absolutely! You can set preferences, exclude allergies, and choose your delivery frequency in your account settings.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>What is your refund policy?</h4>
+                    <p>We offer a 100% satisfaction guarantee. If you're not happy with any fruit, we'll replace it or refund you - no questions asked.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>FreshFruits</h3>
+                <p>Your trusted source for fresh, organic fruits delivered to your door.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <p><a href="index.html">Home</a></p>
+                <p><a href="about.html">About Us</a></p>
+                <p><a href="services.html">Services</a></p>
+                <p><a href="contact.html">Contact Us</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>hello@freshfruits.com</p>
+                <p>+1 (555) 123-4567</p>
+                <p>123 Fruit Street, NY</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p> FreshFruits. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

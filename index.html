@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreshFruits - Home</title>
+    <style>
+        /* Fruit Selling Website - Shared Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fffdf5;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: linear-gradient(135deg, #56ab2f 0%, #a8e063 100%);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #2d3436;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+                url('https://images.unsplash.com/photo-1619566636858-adf3ef46400b?w=1920');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 0;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: #ff6b6b;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #ee5a5a;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
+        }
+
+        .btn-secondary {
+            background: #ffa502;
+            margin-left: 1rem;
+        }
+
+        .btn-secondary:hover {
+            background: #e69500;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2d3436;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #636e72;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        /* Fruit Cards */
+        .fruit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .fruit-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .fruit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .fruit-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .fruit-card-content {
+            padding: 1.5rem;
+        }
+
+        .fruit-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #2d3436;
+        }
+
+        .fruit-card p {
+            color: #636e72;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #2d3436;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            color: #636e72;
+            line-height: 1.8;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            color: #ff6b6b;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            color: #636e72;
+            font-weight: 500;
+        }
+
+        /* Service Cards */
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #2d3436;
+        }
+
+        .service-card p {
+            color: #636e72;
+            line-height: 1.7;
+        }
+
+        /* Contact Form */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info {
+            padding: 2rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #2d3436;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            gap: 1rem;
+        }
+
+        .contact-detail .icon {
+            font-size: 1.5rem;
+            width: 50px;
+            height: 50px;
+            background: #ff6b6b;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #2d3436;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #dfe6e9;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #ff6b6b;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #56ab2f 0%, #a8e063 100%);
+            color: white;
+            padding: 3rem 2rem 1rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #14532D;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #F0FDF4;
+            text-decoration: none;
+            line-height: 1.8;
+        }
+
+        .footer-section a:hover {
+            color: #ff6b6b;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #636e72;
+            padding-top: 1.5rem;
+            color: #F0FDF4;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <base target="_blank">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Fresh<span>Fruits</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Fresh & Organic Fruits Delivered</h1>
+            <p>Hand-picked, farm-fresh fruits delivered straight to your doorstep. Nature's sweetness, just a click
+                away!</p>
+            <a href="services.html" class="btn">Shop Now</a>
+            <a href="about.html" class="btn btn-secondary">Learn More</a>
+        </div>
+    </section>
+
+    <!-- Featured Fruits -->
+    <section class="section">
+        <h2 class="section-title">Our Featured Fruits</h2>
+        <p class="section-subtitle">Discover the finest selection of seasonal fruits</p>
+
+        <div class="fruit-grid">
+            <div class="fruit-card">
+                <img src="premium_photo-1661322640130-f6a1e2c36653.avif" alt="">
+                <div class="fruit-card-content">
+                    <h3>Fresh Apples</h3>
+                    <p>Crisp, juicy, and perfectly sweet. Sourced from the finest orchards.</p>
+                    <span class="price">150 ₹ / kg</span>
+                </div>
+            </div>
+
+            <div class="fruit-card">
+                <img src="premium_photo-1675237625695-710b9a6c3f2e.avif" alt="">
+                <div class="fruit-card-content">
+                    <h3>Sweet Oranges</h3>
+                    <p>Sun-ripened oranges bursting with vitamin C and natural sweetness.</p>
+                    <span class="price">100 ₹ / kg</span>
+                </div>
+            </div>
+
+            <div class="fruit-card">
+                <img src="https://images.unsplash.com/photo-1553279768-865429fa0078?w=400" alt="Mangoes">
+                <div class="fruit-card-content">
+                    <h3>Alphonso Mangoes</h3>
+                    <p>The king of fruits. Rich, creamy, and irresistibly delicious.</p>
+                    <span class="price">250 ₹/ kg</span>
+                </div>
+            </div>
+
+            <div class="fruit-card">
+              <img src="/banana image.jpg" alt="">
+                <div class="fruit-card-content">
+                    <h3>Premium Bananas</h3>
+                    <p>Perfectly ripe bananas, great for snacking or smoothies.</p>
+                    <span class="price">60 ₹/ kg</span>
+                </div>
+            </div>
+            <div class="fruit-card">
+                
+                <div class="fruit-card-content">
+                   <img src="/watermelon image.jpg" alt="">
+                    <h3>sweet watermelon</h3>
+                    <p>Black Natural Fresh Watermelon, Average Fruit Weight.</p>
+                    <span class="price">30 ₹/ kg</span>
+                </div>
+            </div>
+            <div class="fruit-card">
+               <img src="/cherry image.jpg" alt="">
+                <div class="fruit-card-content">
+                    <h3>red cherries</h3>
+                    <p>Indian Cherries Glazed Karonda Cherry, Packaging .</p>
+                    <span class="price">180 ₹/ kg</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="section" style="background: #fff3e0; margin: 0; max-width: 100%; padding: 5rem 2rem;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 class="section-title">Why Choose FreshFruits?</h2>
+            <div class="stats">
+                <div class="stat-item">
+                    <h3>100%</h3>
+                    <p>Organic</p>
+                </div>
+                <div class="stat-item">
+                    <h3>50+</h3>
+                    <p>Fruit Varieties</p>
+                </div>
+                <div class="stat-item">
+                    <h3>24h</h3>
+                    <p>Fast Delivery</p>
+                </div>
+                <div class="stat-item">
+                    <h3>10K+</h3>
+                    <p>Happy Customers</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>FreshFruits</h3>
+                <p>Your trusted source for fresh, organic fruits delivered to your door.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <p><a href="index.html">Home</a></p>
+                <p><a href="about.html">About Us</a></p>
+                <p><a href="services.html">Services</a></p>
+                <p><a href="contact.html">Contact Us</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>hello@freshfruits.com</p>
+                <p>+1 (555) 123-4567</p>
+                <p>123 Fruit Street, NY</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p> FreshFruits. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
